@@ -59,6 +59,10 @@ After that we place the cells and legalize the placement to place cells on site 
 |max transition | 602| 0 |
 |max capacitance | 1141 | 5| 
 
+# CTS :-
+
+ 
+
 
 
 
