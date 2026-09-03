@@ -59,6 +59,14 @@ After that we place the cells and legalize the placement to place cells on site 
 |max transition | 602| 0 |
 |max capacitance | 1141 | 5| 
 
+# Placement optimize methods :-
+1. Bounds:-
+Soft Bound: A gentle suggestion to the tool. ICC2 will try to place the specified cells within the boundary, but it can place them outside if necessary to resolve timing or congestion issues. There is no hard physical barrier.
+Hard Bound: A strict rule. All specified cells must be placed inside the boundary. No cells belonging to that bound are allowed to leak out. However, other random cells from the rest of the design can still be placed inside the empty spaces of this region.
+Exclusive Bound: The most restrictive type. Only the specified cells can be placed inside the region, and no other cells from the design can enter.
+
+2. Path grouping :-  Is a technique used to organize the timing paths of a design into distinct categories called clock groups or path groups.By default, the optimization engine focuses heavily on the worst-case timing violation in the entire chip WNS. Path grouping prevents a single bad path in one part of your design from starving the rest of your design of optimization effort.
+
 # CTS :-
 
  
