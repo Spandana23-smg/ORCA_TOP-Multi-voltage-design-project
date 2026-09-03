@@ -42,7 +42,27 @@ Then create a voltage area because some macro's & the the std cells need more po
 | 0.95 V | 0 V | 1.16 V |
 
 Then place the macro in the core region there are 40 macros in the design they are divided in 4 hierarchy. I place the macro's according to the flylines and give the the channel spacing b/w the macros and also b/w core & macros. After that create the soft placement blockages in the channel spacing.
-After that 
+After that place the physical only cells I placed the end cap & tap cells in the design.
+
+# Power Planing
+in this we used M7, M8, M2 layers as a Straps to create the mesh , M5 & M6 for macro rings, M1 as a rails to power the standard cells. 
+the power plan contains pg pattern, Pg strategy, via rule and compile strategy by using this ascepts we create the power plan.
+After that checked for connectivity violations, missing vias & pg drc violations and fixed all the violations.
+
+# Placement :-
+Before coming to placement in pre-placement set some app options and did the pre placment mega check.
+Mega check :- check_design -pre_placement_stage
+By using app options set the values for fanout, advance legalizer, routing layers, max density etc..
+After that we place the cells and legalize the placement to place cells on site row and reduce the overlap.Then check for max_tan and max_cap violations. After that do place_opt to reduce the violations.
+| violations| Before place_opt | After place_opt |
+|--- | --- | ---|
+|max transition | 602| 0 |
+|max capacitance | 1141 | 5| 
+
+
+
+
+
 
 
 
