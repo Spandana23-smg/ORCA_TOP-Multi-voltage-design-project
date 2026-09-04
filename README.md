@@ -84,13 +84,16 @@ clock_opt -to build_clock
 clock_opt -to route_clock
 
 | Stages | Setup | Hold | Setup Slack | Hold Slack |
-|--- | --- | --- | --- | --- | WNS | TNS | WNS | TNS |
-|After placement | 3132 | 2572 | -9.05 | 
-|After place opt | 11 | 735 |
-|After Build clock | 2 | 835 |
-|After clock opt | 1 | 51 | 0 | 51 |
+|--- | --- | --- | --- | --- |
+|After placement | 3132 | 2572 | -9.05(WNS) -3692.62 (TNS) | -0.08 (WNS) -26.76 (TNS) |
+|After place opt | 11 | 735 | -0.05(WNS) -0.08(TNS) | -0.13(WNS) -11.58(TNS) |
+|After Build clock | 2 | 835 | 0(WNS) 0(TNS) | -0.09(WNS) -12.85 (TNS)|
+|After clock opt | 1 | 51 | 0 (WNS) 0 (TNS)  | -0.12 (WNS) -3.72 (TNS) |
 
-It will optimize the clock and balance skew 
+It will optimize the clock and balance skew by inserting the buffer & Inverter also optimize the fanout. To balance the Skew it uses the useful skew method.
+
+# Routing
+
 
 
  
