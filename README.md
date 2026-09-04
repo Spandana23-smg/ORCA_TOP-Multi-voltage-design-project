@@ -68,8 +68,29 @@ Exclusive Bound: The most restrictive type. Only the specified cells can be plac
 2. Path grouping :-  Is a technique used to organize the timing paths of a design into distinct categories called clock groups or path groups.By default, the optimization engine focuses heavily on the worst-case timing violation in the entire chip WNS. Path grouping prevents a single bad path in one part of your design from starving the rest of your design of optimization effort.
 
 # CTS 
+In CTS that build the network delivering the clock signal to the every sequential elements in the design. It main goal is to ensure the clock arrives everywhere at the exact same time with minimum delay andd power.
+Have a created a CTS Spef file in that file set a constraints for a clocks in the design in with respect to different scenarios, corners, mode and temperature.
 
+cts constraints :-
+current_mode func
+set_max_tarnsition 0.15 -clock_path [get_clocks] -corners [all_corners]
+set_clock_tree_options -target_skew 0.05 -corners [get_corners ss_125c]
+set_clock_tree_options -tearget_skew 0.05 -corners [get_corners ss_m40c]
+set_clock_tree_options -target_skew 0.02 -corners [get_corners ff_125c]
+set_clock_tree_options -target_skew 0.02 -corners [get_corners ff_m40c]
+set_clock_uncertainty 0.1 -setup [all_clocks]
+set_clock_uncertainty 0.05 -hold [all_clocks]
+clock_opt -to build_clock
+clock_opt -to route_clock
 
+| Stages | Setup | Hold | Setup Slack | Hold Slack |
+|--- | --- | --- | --- | --- | WNS | TNS | WNS | TNS |
+|After placement | 3132 | 2572 | -9.05 | 
+|After place opt | 11 | 735 |
+|After Build clock | 2 | 835 |
+|After clock opt | 1 | 51 | 0 | 51 |
+
+It will optimize the clock and balance skew 
 
 
  
