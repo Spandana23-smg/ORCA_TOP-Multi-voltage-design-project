@@ -25,7 +25,7 @@ Clocks Report
 # Floorplaning
 At first invoke the icc2 then set a search path for ndm files which contains .lib, tf, lef files.
 then we read the netlist and initialize the floorplan to create the core and die area in L shape below values.
-Screenshot 2026-09-02 220012.png
+
 | Metric | Value |
 | --- | --- |
 | Core Utilization | 0.75 |
