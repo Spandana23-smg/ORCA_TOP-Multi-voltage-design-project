@@ -119,8 +119,10 @@ StarRC is udes to extract the RC parasitics. StarRC translates the physical geom
 # PrimeTime
 
 It is used to create a seesions in the Primetime that is Funx max and func min.
-It do optimization in 2 way
+It do optimization in 2 ways 
+
 1.Logic aware ECO :- PrimeTime acts purely as a mathematical calculator. It identifies a timing violation on a path, calculates that a larger buffer or an extra inverter will fix the delay, and generates a command to modify the netlist.
+
 2. Physical aware ECO :- When PrimeTime detects a violation, it maps out the entire route of the wire rather than just looking at the start and end pins. It looks for fragmented spaces and legal placement sites directly along that wire path.
 The fix file sent back to the P&R tool includes exact location guidance. Because the P&R tool doesn't have to guess where to put the changes, the fix is highly effective on the first pass.
 
