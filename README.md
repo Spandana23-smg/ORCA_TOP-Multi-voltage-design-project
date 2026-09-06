@@ -88,15 +88,21 @@ clock_opt -to route_clock
 |After placement | 3132 | 2572 | -9.05(WNS) -3692.62 (TNS) | -0.08 (WNS) -26.76 (TNS) |
 |After place opt | 11 | 735 | -0.05(WNS) -0.08(TNS) | -0.13(WNS) -11.58(TNS) |
 |After Build clock | 2 | 835 | 0(WNS) 0(TNS) | -0.09(WNS) -12.85 (TNS)|
-|After clock opt | 1 | 51 | 0 (WNS) 0 (TNS)  | -0.12 (WNS) -3.72 (TNS) |
-
+|After clock opt | 1 | 51 | 0 (WNS) 0 (TNS)  | -0.12 (WNS) -3.72 (TNS) 
 It will optimize the clock and balance skew by inserting the buffer & Inverter also optimize the fanout. To balance the Skew it uses the useful skew method.
 
 # Routing
+ creates physical metal connections and vias between placed standard cells and macros using a netlist.
+Stages of Routing:- 
+1. Global Routing: Works at a coarse level. Divides the chip into regions and assigns approximate routing paths to avoid congestion.
+2. Track Assignment: Assigns specific horizontal or vertical routing tracks within the global routing guides for each net segment.
+3. Detailed Routing: Generates the actual wire geometries and vias on specific tracks. It connects exact pin terminals while obeying strict DRC.
+check_lvs -max_errors 0
+where the above command checks for opens and shorts.
+route_eco -open_net_driven true
+check_routes
+optimize_routes
 
-
-
- 
 
 
 
