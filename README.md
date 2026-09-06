@@ -73,14 +73,22 @@ Have a created a CTS Spef file in that file set a constraints for a clocks in th
 
 cts constraints :-
 current_mode func
-set_max_tarnsition 0.15 -clock_path [get_clocks] -corners [all_corners]
+set_max_tarnsition 0.15 -clock_path [get_clocks] -corners [all_corners]  
+
 set_clock_tree_options -target_skew 0.05 -corners [get_corners ss_125c]
+
 set_clock_tree_options -tearget_skew 0.05 -corners [get_corners ss_m40c]
+
 set_clock_tree_options -target_skew 0.02 -corners [get_corners ff_125c]
+
 set_clock_tree_options -target_skew 0.02 -corners [get_corners ff_m40c]
+
 set_clock_uncertainty 0.1 -setup [all_clocks]
+
 set_clock_uncertainty 0.05 -hold [all_clocks]
+
 clock_opt -to build_clock
+
 clock_opt -to route_clock
 
 | Stages | Setup | Hold | Setup Slack | Hold Slack |
@@ -100,7 +108,9 @@ Stages of Routing:-
 check_lvs -max_errors 0
 where the above command checks for opens and shorts.
 route_eco -open_net_driven true
+
 check_routes
+
 optimize_routes
 
 
