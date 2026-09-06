@@ -105,13 +105,24 @@ Stages of Routing:-
 1. Global Routing: Works at a coarse level. Divides the chip into regions and assigns approximate routing paths to avoid congestion.
 2. Track Assignment: Assigns specific horizontal or vertical routing tracks within the global routing guides for each net segment.
 3. Detailed Routing: Generates the actual wire geometries and vias on specific tracks. It connects exact pin terminals while obeying strict DRC.
-check_lvs -max_errors 0
-where the above command checks for opens and shorts.
+check_lvs -max_errors 0:- where the above command checks for opens and shorts.
+
 route_eco -open_net_driven true
 
 check_routes
 
 optimize_routes
+
+# StarRC 
+StarRC is udes to extract the RC parasitics. StarRC translates the physical geometric layout into electrical data and generate the Spef files with different RC Corners. In this project generated the 2 spef files with respect to RC min and RC max corners. Where it evaluates every wire track, curve, and via to measure its total electrical resistance (\(R\)), ground capacitance (\(C\)), and coupling capacitance (\(CC\)) between adjacent wires.
+
+# PrimeTime
+
+It is used to create a seesions in the Primetime that is Funx max and func min.
+It do optimization in 2 way
+1.Logic aware ECO :- PrimeTime acts purely as a mathematical calculator. It identifies a timing violation on a path, calculates that a larger buffer or an extra inverter will fix the delay, and generates a command to modify the netlist.
+2. Physical aware ECO :- When PrimeTime detects a violation, it maps out the entire route of the wire rather than just looking at the start and end pins. It looks for fragmented spaces and legal placement sites directly along that wire path.
+The fix file sent back to the P&R tool includes exact location guidance. Because the P&R tool doesn't have to guess where to put the changes, the fix is highly effective on the first pass.
 
 
 
